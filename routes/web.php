@@ -1,18 +1,17 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// $user = User::factory()->create();
+try {
+    auth()->loginUsingId(1);
+} catch (\Throwable $th) {
+    //throw $th;
+}
 
+Route::view('tasks', 'task')->name('tasks');
 Route::view('/', 'welcome');
 
 Route::view('dashboard', 'dashboard')
@@ -23,4 +22,6 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Volt::route('activity', 'activity/index')->name('activity');
+
+require __DIR__ . '/auth.php';
