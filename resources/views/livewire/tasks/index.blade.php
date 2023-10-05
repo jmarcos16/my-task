@@ -22,7 +22,7 @@
                         <tr class="hover:bg-gray-50">
                             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                 <div class="relative h-10 w-10">
-                                    <img class="h-full w-full rounded-full object-cover object-center"
+                                    <img class="h-full w-full z-10 rounded-full object-cover"
                                         src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                         alt="" />
                                 </div>
@@ -39,7 +39,8 @@
 
                             </td>
                             <td class="px-6 py-4">
-                                <button @click="$dispatch('show-modal', {{ $task }})">
+                                <livewire:tasks.show :task="$task" :key="$task->id" />
+                                {{-- <button @click="$dispatch('show-modal', {{ $task }})">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -47,16 +48,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
-                                </button>
+                                </button> --}}
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            <x-modal name="task-show" title="Task Detail">
-                <livewire:tasks.show />
-            </x-modal>
         </div>
     </div>
 </div>
