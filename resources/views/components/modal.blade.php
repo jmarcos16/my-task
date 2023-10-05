@@ -1,31 +1,33 @@
-@props(['title', 'name'])
+@props(['name'])
 
-<div 
-    x-data="{
-        show: false, 
+<div x-data="{
+        name: '{{ $name }}',
+        show: false,
         @if ($attributes->wire('model')->value())
-            show: @entangle($attributes->wire('model')),
+            show: @entangle($attributes->wire('model')) 
         @endif
-        name: '{{ $name }}'
     }"
     x-show="show" 
     x-on:open-modal.window="show = ($event.detail.name === name)"
     x-on:close-modal.window="show = !($event.detail.name === name)" 
     x-on:keydown.escape.window="show = false"
-    style="display: none;" class="fix z-20 inset-0" 
+    style="display: none;" 
+    class="fixed inset-0 z-50 p-4 overflow-y-auto" 
     x-transition:enter="ease-out duration-300"
-    x-transition:duration.300ms
+    x-transition:duration.300ms 
     x-transition:leave-end="opacity-0">
-    <div x-on:click="show = false" class="fixed inset-0 z-30 bg-gray-600 opacity-40 blur"></div>
-    <div class="bg-white z-40 shadow rounded m-auto fixed inset-0 max-w-2xl overflow-y-auto max-h-[500px]">
+    
+    <div x-on:click="show = false" class="fixed inset-0 transition-opacity transform bg-slate-400 dark:bg-stale-700 bg-opacity-60 dark:bg-opacity-60"></div>
 
-        <div class="py-3 px-5 flex justify-between items-center border-b">
-            <h2 class="text-lg font-semibold">{{ $title }}</h2>
-            <button x-on:click="show = false" class="text-2xl text-gray-700 hover:text-gray-900">&times;
-            </button>
-        </div>
-        <div class="p-5">
-            {{ $slot }}
-        </div>
+    <div class="flex items-end justify-center w-full min-h-full mx-auto transform sm:items-start sm:max-w-2xl"
+        x-show="show"
+        x-on:click.self="close"
+        x-transition:enter="ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+        x-transition:leave="ease-in duration-200"
+        x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+        x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        {{ $slot }}
     </div>
 </div>
