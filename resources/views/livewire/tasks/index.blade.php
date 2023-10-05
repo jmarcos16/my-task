@@ -19,7 +19,7 @@
                 </thead>
                 <tbody class="border-t border-gray-100 divide-y divide-gray-100">
                     @foreach ($tasks as $task)
-                        <tr class="hover:bg-gray-50">
+                        <tr wire:key="{{ $task->id }}" class="hover:bg-gray-50">
                             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                 <div class="relative w-10 h-10">
                                     <img class="object-cover w-full h-full rounded-full"
@@ -33,7 +33,7 @@
                             </th>
                             <td class="px-6 py-4">{{ $task->title }}</td>
                             <td class="px-6 py-4">
-                                {{ $task->started_at->diffForHumans() }}
+                                {{-- {{ $task->started_at->diffForHumans() }} --}}
                             </td>
                             <td class="px-6 py-4">
 

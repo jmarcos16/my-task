@@ -4,11 +4,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-// $user = User::factory()->create();
+$user = User::factory()->create();
 try {
     auth()->loginUsingId(1);
 } catch (\Throwable $th) {
-    //throw $th;
+    // $user = User::factory()->create();
+    // auth()->loginUsingId($user->id);
 }
 
 Route::view('tasks', 'task')->name('tasks');
