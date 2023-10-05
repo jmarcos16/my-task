@@ -16,4 +16,9 @@ class Index extends Component
             'tasks' => Task::paginate(10),
         ]);
     }
+
+    // public function showUser(User $user)
+    // {
+    //     $this->emit('showUser', $user);
+    // }
 }
