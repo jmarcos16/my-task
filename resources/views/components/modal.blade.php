@@ -14,6 +14,7 @@
     x-on:keydown.escape.window="show = false"
     style="display: none;" class="fix z-20 inset-0" 
     x-transition:enter="ease-out duration-300"
+    x-transition:duration.300ms
     x-transition:leave-end="opacity-0">
     <div x-on:click="show = false" class="fixed inset-0 z-30 bg-gray-600 opacity-40 blur"></div>
     <div class="bg-white z-40 shadow rounded m-auto fixed inset-0 max-w-2xl overflow-y-auto max-h-[500px]">

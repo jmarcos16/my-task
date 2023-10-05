@@ -19,7 +19,7 @@ new class extends Component {
         </svg>
     </button>
 
-    <x-modal title="Task Details" name="{{ $task->id }}" wire:model.defer="modal">
+    <x-modal title="Task Details" name="{{ $task->id }}" wire:model="modal">
         {{$task->title}} <br> {{$task->description}}
     </x-modal>
 
